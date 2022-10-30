@@ -10,7 +10,7 @@ import actionlib
 
 from geometry_msgs.msg import Twist
 
-form geometry_msgs.msg import PoseWithCovarianceStamped
+from geometry_msgs.msg import PoseWithCovarianceStamped
 
 from move_base_msgs.msg import MoveBaseAction, MoveBaseGoal
 
