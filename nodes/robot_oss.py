@@ -64,7 +64,6 @@ pub_init.publish(init_pose)
 
 def send_goal(x, y, theta):
 
-     # 관련 클래스 로드
 
     goal = MoveBaseGoal()
 
@@ -72,23 +71,20 @@ def send_goal(x, y, theta):
 
     goal.target_pose.header.stamp = rospy.Time.now()
 
-    # 목표 지점 x, y 좌표 지정
-
     goal.target_pose.pose.position.x = x
 
     goal.target_pose.pose.position.y = y
 
-    # 목표 지점 방향 지정
 
-    q = quaternion_from_euler(0.0, 0.0, theta)
+    quat = quaternion_from_euler(0.0, 0.0, theta)
 
-    goal.target_pose.pose.orientation.x=q[0]
+    goal.target_pose.pose.orientation.x = quat[0]
 
-    goal.target_pose.pose.orientation.y=q[1]
+    goal.target_pose.pose.orientation.y = quat[1]
 
-    goal.target_pose.pose.orientation.z=q[2]
+    goal.target_pose.pose.orientation.z = quat[2]
 
-    goal.target_pose.pose.orientation.w=q[3]
+    goal.target_pose.pose.orientation.w = quat[3]
 
     client.send_goal(goal)
 
@@ -103,18 +99,13 @@ else:
     print(client.get_result())
 
  
-
- 
+update_init_pose(0.2, 0.3, 0.4)
 
 update_init_pose(0.2, 0.3, 0.4)
 
-# 목표 지점으로 이동 명령
-
 send_goal(0.5,0.5,0.0)
-
+send_goal(0.5,1.0,0.0)
 send_goal(-2.0, -0.3, 0.0)
-
- 
 
  
 
